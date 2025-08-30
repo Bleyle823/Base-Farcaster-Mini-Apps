@@ -234,7 +234,7 @@ export function OneInchWidget() {
       </div>
 
       {/* Widget Display */}
-      <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-xl shadow-lg border border-[var(--app-card-border)] p-5">
+      <div className="oneinch-widget-container p-5">
         <h3 className="text-lg font-medium text-[var(--app-foreground)] mb-4">
           1inch Swap Widget
         </h3>
@@ -248,7 +248,7 @@ export function OneInchWidget() {
           }`}
         >
           {!isWidgetLoaded && (
-            <div className="flex items-center justify-center h-[600px]">
+            <div className="flex items-center justify-center h-[600px] oneinch-widget-loading rounded-xl">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--app-accent)] mx-auto mb-4"></div>
                 <p className="text-[var(--app-foreground-muted)]">Loading 1inch widget...</p>
