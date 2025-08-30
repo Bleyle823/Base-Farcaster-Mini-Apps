@@ -135,3 +135,41 @@ body {
     opacity: 0;
   }
 }
+
+/* 1inch Widget Specific Styles */
+.oneinch-widget-container {
+  background: linear-gradient(135deg, var(--app-card-bg) 0%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--app-card-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.oneinch-widget-iframe {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.oneinch-widget-iframe:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.oneinch-widget-loading {
+  background: linear-gradient(90deg, 
+    var(--app-card-bg) 25%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    var(--app-card-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 2s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
