@@ -1,11 +1,24 @@
-# MiniKit Template
+# PancakeSwap - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About PancakeSwap
+
+PancakeSwap is the leading decentralized exchange (DEX) on the Binance Smart Chain (BSC) and other EVM-compatible chains. It offers a comprehensive DeFi ecosystem with token swapping, yield farming, lottery, and NFT marketplace features.
+
+### Key Features
+- **Multi-Chain Support**: Available on BSC, Ethereum, Aptos, and more
+- **Token Swapping**: Automated market maker (AMM) for token exchanges
+- **Yield Farming**: Earn CAKE tokens through various farming strategies
+- **Syrup Pools**: Stake CAKE tokens to earn other tokens
+- **Lottery System**: Weekly lottery with CAKE token prizes
+- **NFT Marketplace**: Trade PancakeSquad NFTs
+- **Prediction Markets**: Bet on token price movements
 
 ## Getting Started
 
@@ -89,23 +102,38 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your PancakeSwap frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your PancakeSwap Frame:
+   - Modify `page.tsx` to create your PancakeSwap Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with PancakeSwap SDK for swap and farming functionality
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## PancakeSwap Integration
+
+This mini app can be extended to include:
+- Token swapping across multiple chains
+- Yield farming opportunities and APY displays
+- CAKE token staking and rewards
+- Lottery ticket purchasing and results
+- NFT marketplace integration
+- Prediction market betting interface
+- Multi-chain portfolio tracking
+
 ## Learn More
 
+- [PancakeSwap Documentation](https://docs.pancakeswap.finance/)
+- [PancakeSwap App](https://pancakeswap.finance/)
+- [Binance Smart Chain](https://www.bnbchain.org/)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
