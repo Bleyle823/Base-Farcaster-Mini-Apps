@@ -1,11 +1,24 @@
-# MiniKit Template
+# 1inch - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About 1inch
+
+1inch is a decentralized exchange (DEX) aggregator that sources liquidity from various DEXs to provide users with the best possible trading rates. It splits trades across multiple exchanges to minimize slippage and maximize efficiency.
+
+### Key Features
+- **DEX Aggregation**: Routes trades across multiple exchanges for best rates
+- **Multi-Chain Support**: Ethereum, BSC, Polygon, Avalanche, and more
+- **Pathfinder Algorithm**: Advanced routing for optimal trade execution
+- **Limit Orders**: Place time-based and conditional orders
+- **Gas Optimization**: Minimizes gas costs through smart routing
+- **Liquidity Sources**: Integrates with 100+ DEXs and protocols
+- **1INCH Token**: Governance and staking rewards
 
 ## Getting Started
 
@@ -89,23 +102,38 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your 1inch frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your 1inch Frame:
+   - Modify `page.tsx` to create your 1inch Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with 1inch API for aggregation and routing
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## 1inch Integration
+
+This mini app can be extended to include:
+- Multi-DEX token swapping with best rates
+- Advanced routing and pathfinding
+- Limit order management
+- Gas fee optimization
+- Liquidity source comparison
+- Portfolio tracking across chains
+- 1INCH token staking and governance
+
 ## Learn More
 
+- [1inch Documentation](https://docs.1inch.io/)
+- [1inch App](https://1inch.io/)
+- [1inch Protocol](https://1inch.io/)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
