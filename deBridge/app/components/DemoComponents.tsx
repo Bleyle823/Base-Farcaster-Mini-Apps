@@ -145,9 +145,14 @@ export function Features({ setActiveTab }: FeaturesProps) {
             </span>
           </li>
         </ul>
-        <Button variant="outline" onClick={() => setActiveTab("home")}>
-          Back to Home
-        </Button>
+        <div className="flex space-x-2">
+          <Button variant="outline" onClick={() => setActiveTab("home")}>
+            Back to Home
+          </Button>
+          <Button variant="primary" onClick={() => setActiveTab("bridge")}>
+            Try DeBridge
+          </Button>
+        </div>
       </Card>
     </div>
   );
