@@ -1,11 +1,24 @@
-# MiniKit Template
+# KyberSwap - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About KyberSwap
+
+KyberSwap is a decentralized exchange (DEX) aggregator and automated market maker (AMM) that provides the best token swap rates across multiple DEXs and chains. It features concentrated liquidity pools and advanced trading features.
+
+### Key Features
+- **DEX Aggregation**: Finds the best swap rates across multiple exchanges
+- **Concentrated Liquidity**: Dynamic AMM (DMM) with concentrated liquidity pools
+- **Multi-Chain Support**: Available on Ethereum, Polygon, BSC, Avalanche, and more
+- **Elastic Pools**: Customizable fee structures and liquidity ranges
+- **Cross-Chain Swaps**: Seamless asset transfers between different blockchains
+- **Advanced Trading**: Limit orders, time-weighted orders, and more
+- **Liquidity Mining**: Earn rewards by providing liquidity
 
 ## Getting Started
 
@@ -89,23 +102,38 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your KyberSwap frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your KyberSwap Frame:
+   - Modify `page.tsx` to create your KyberSwap Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with KyberSwap SDK for swap and liquidity functionality
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## KyberSwap Integration
+
+This mini app can be extended to include:
+- Multi-DEX token swapping with best rates
+- Concentrated liquidity pool management
+- Cross-chain swap interface
+- Advanced trading features (limit orders, etc.)
+- Liquidity mining opportunities
+- Portfolio analytics and tracking
+- Gas fee optimization across chains
+
 ## Learn More
 
+- [KyberSwap Documentation](https://docs.kyberswap.com/)
+- [KyberSwap App](https://kyberswap.com/)
+- [Kyber Network](https://kyber.network/)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
