@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode, useCallback, useMemo, useState } from "react";
+import DeBridgeWidget from "./DeBridgeWidget";
 import { useAccount } from "wagmi";
 import {
   Transaction,
@@ -151,6 +152,30 @@ export function Features({ setActiveTab }: FeaturesProps) {
           </Button>
           <Button variant="primary" onClick={() => setActiveTab("bridge")}>
             Try DeBridge
+          </Button>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+type BridgeProps = {
+  setActiveTab: (tab: string) => void;
+};
+
+export function Bridge({ setActiveTab }: BridgeProps) {
+  return (
+    <div className="space-y-6 animate-fade-in">
+      <Card title="DeBridge Cross-Chain Swap">
+        <p className="text-[var(--app-foreground-muted)] mb-4">
+          Swap tokens across multiple blockchains seamlessly using DeBridge's cross-chain infrastructure.
+        </p>
+        <div className="w-full">
+          <DeBridgeWidget />
+        </div>
+        <div className="mt-4">
+          <Button variant="outline" onClick={() => setActiveTab("home")}>
+            Back to Home
           </Button>
         </div>
       </Card>
