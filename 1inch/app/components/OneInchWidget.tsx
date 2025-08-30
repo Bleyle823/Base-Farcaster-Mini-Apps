@@ -79,7 +79,7 @@ export function OneInchWidget() {
     // Setup message listener for JSON-RPC communication
     const handleMessage = (event: MessageEvent) => {
       if (event.data.jsonrpc === '2.0' && event.source === iframe.contentWindow) {
-        handleJsonRpcRequest(event.data, provider);
+        handleJsonRpcRequest(event.data, provider, iframe);
       }
     };
 
