@@ -28,7 +28,7 @@ import { OneInchWidget } from "./components/OneInchWidget";
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState("1inch");
 
   const addFrame = useAddFrame();
   const openUrl = useOpenUrl();
@@ -99,6 +99,7 @@ export default function App() {
         <main className="flex-1">
           {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
           {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
+          {activeTab === "1inch" && <OneInchWidget />}
         </main>
 
         <footer className="mt-2 pt-4 flex justify-center">
