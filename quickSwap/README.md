@@ -1,11 +1,23 @@
-# MiniKit Template
+# QuickSwap - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About QuickSwap
+
+QuickSwap is a decentralized exchange (DEX) built on Polygon (formerly Matic) that provides fast and low-cost token swapping. It's a fork of Uniswap V2, optimized for Polygon's high-speed, low-fee environment.
+
+### Key Features
+- **Polygon Native**: Built specifically for Polygon network
+- **Low Fees**: Minimal transaction costs compared to Ethereum mainnet
+- **Fast Transactions**: Quick confirmation times on Polygon
+- **Token Swapping**: Automated market maker (AMM) for ERC-20 tokens
+- **Liquidity Mining**: Earn QUICK tokens by providing liquidity
+- **Cross-Chain Bridge**: Easy asset transfer between Ethereum and Polygon
 
 ## Getting Started
 
@@ -89,23 +101,37 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your QuickSwap frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your QuickSwap Frame:
+   - Modify `page.tsx` to create your QuickSwap Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with QuickSwap SDK for swap functionality
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## QuickSwap Integration
+
+This mini app can be extended to include:
+- Token swapping on Polygon network
+- Liquidity pool information and APY
+- QUICK token staking and rewards
+- Cross-chain bridge interface
+- Gas fee estimation (Polygon fees)
+- Transaction history and analytics
+
 ## Learn More
 
+- [QuickSwap Documentation](https://docs.quickswap.exchange/)
+- [QuickSwap App](https://quickswap.exchange/)
+- [Polygon Network](https://polygon.technology/)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
