@@ -15,14 +15,14 @@ A comprehensive collection of mini applications for popular decentralized exchan
 
 | DEX | Chains | Features | Status |
 |-----|--------|----------|--------|
-| **1inch** | Ethereum, Polygon, BSC, Arbitrum | Aggregated swaps, best rates | ✅ Live |
-| **Balancer** | Ethereum, Polygon, Arbitrum | Weighted pools, LBP | ✅ Live |
-| **deBridge** | Multi-chain | Cross-chain swaps, bridging | ✅ Live |
-| **KyberSwap** | Ethereum, Polygon, BSC, Arbitrum | Dynamic MM, limit orders | ✅ Live |
-| **PancakeSwap** | BSC, Ethereum, Arbitrum | AMM, farms, pools | ✅ Live |
-| **QuickSwap** | Polygon, Ethereum | Dragon's Lair, dual rewards | ✅ Live |
-| **SushiSwap** | Multi-chain | AMM, onsen farms, kashi | ✅ Live |
-| **Uniswap** | Ethereum, Polygon, Arbitrum, Optimism | V3 concentrated liquidity | ✅ Live |
+| **1inch** | Ethereum, Polygon, BSC, Arbitrum | Aggregated swaps, best rates | ❌ Live |
+| **Balancer** | Ethereum, Polygon, Arbitrum | Weighted pools, LBP | ❌ Live |
+| **deBridge** | Multi-chain | Cross-chain swaps, bridging | ❌ Live |
+| **KyberSwap** | Ethereum, Polygon, BSC, Arbitrum | Dynamic MM, limit orders | ❌ Live |
+| **PancakeSwap** | BSC, Ethereum, Arbitrum | AMM, farms, pools | ❌ Live |
+| **QuickSwap** | Polygon, Ethereum | Dragon's Lair, dual rewards | ❌ Live |
+| **SushiSwap** | Multi-chain | AMM, onsen farms, kashi | ❌ Live |
+| **Uniswap** | Ethereum, Polygon, Arbitrum, Optimism | V3 concentrated liquidity | ❌ Live |
 
 ## 🚀 Quick Start
 
@@ -110,48 +110,10 @@ export const frameMetadata = {
 };
 ```
 
-## 🛠️ Architecture
 
-```
-dex-mini-apps/
-├── apps/
-│   ├── 1inch/           # 1inch aggregator app
-│   ├── balancer/        # Balancer protocol app
-│   ├── debridge/        # deBridge cross-chain app
-│   ├── kyberswap/       # KyberSwap dynamic MM app
-│   ├── pancakeswap/     # PancakeSwap AMM app
-│   ├── quickswap/       # QuickSwap Polygon app
-│   ├── sushiswap/       # SushiSwap multi-chain app
-│   └── uniswap/         # Uniswap V3 app
-├── packages/
-│   ├── shared-ui/       # Common UI components
-│   ├── dex-sdk/         # DEX interaction utilities
-│   ├── farcaster-sdk/   # Farcaster frame utilities
-│   └── web3-utils/      # Blockchain utilities
-├── docs/                # Documentation
-└── deploy/              # Deployment configurations
-```
 
 ## 🔧 Usage Examples
 
-### Basic Token Swap
-
-```typescript
-import { UniswapMiniApp } from './apps/uniswap';
-
-const app = new UniswapMiniApp({
-  chainId: 1,
-  walletProvider: provider,
-});
-
-// Execute a swap
-const txHash = await app.swap({
-  tokenIn: '0xA0b86a33E6c...',  // USDC
-  tokenOut: '0xC02aaA39b22...',  // WETH
-  amountIn: '1000000000',       // 1000 USDC
-  slippage: 0.5,               // 0.5%
-});
-```
 
 ### Farcaster Frame Integration
 
@@ -173,25 +135,7 @@ export async function POST(req: Request) {
 
 ## 🔗 API Reference
 
-### Common Methods
 
-All DEX mini apps implement a standard interface:
-
-```typescript
-interface DexMiniApp {
-  // Get token price
-  getPrice(tokenAddress: string): Promise<number>;
-  
-  // Execute swap
-  swap(params: SwapParams): Promise<string>;
-  
-  // Get liquidity pools
-  getPools(token0: string, token1: string): Promise<Pool[]>;
-  
-  // Get user balances
-  getBalances(userAddress: string): Promise<Balance[]>;
-}
-```
 
 ### Farcaster Actions
 
@@ -219,26 +163,6 @@ await createPriceFrame({
 3. Add Farcaster frame support
 4. Update the main router configuration
 
-### Styling
-
-Each app uses Tailwind CSS with a shared design system:
-
-```typescript
-// Shared theme configuration
-export const theme = {
-  colors: {
-    primary: '#3B82F6',
-    secondary: '#10B981',
-    accent: '#F59E0B',
-  },
-  // DEX-specific overrides
-  dex: {
-    uniswap: { primary: '#FF007A' },
-    sushiswap: { primary: '#FA52A0' },
-    // ...
-  },
-};
-```
 
 ## 🔐 Security
 
