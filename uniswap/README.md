@@ -1,11 +1,22 @@
-# MiniKit Template
+# Uniswap - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About Uniswap
+
+Uniswap is the largest decentralized exchange (DEX) on Ethereum and other EVM-compatible chains. It enables users to swap ERC-20 tokens directly from their wallets without intermediaries, using automated market makers (AMMs) and liquidity pools.
+
+### Key Features
+- **Token Swapping**: Seamless ERC-20 token exchanges
+- **Liquidity Provision**: Earn fees by providing liquidity to pools
+- **Multiple Versions**: Support for Uniswap V2, V3, and V4
+- **Cross-Chain**: Available on Ethereum, Base, Polygon, and more
+- **Governance**: UNI token holders can participate in protocol decisions
 
 ## Getting Started
 
@@ -89,23 +100,37 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your Uniswap frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your Uniswap Frame:
+   - Modify `page.tsx` to create your Uniswap Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with Uniswap V3 SDK or V4 SDK for swap functionality
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## Uniswap Integration
+
+This mini app can be extended to include:
+- Token price feeds and charts
+- Swap interface with slippage settings
+- Liquidity pool information
+- Gas fee estimation
+- Transaction history
+- Portfolio tracking
+
 ## Learn More
 
+- [Uniswap Documentation](https://docs.uniswap.org/)
+- [Uniswap V3 SDK](https://docs.uniswap.org/sdk/v3/overview)
+- [Uniswap V4 Documentation](https://docs.uniswap.org/concepts/overview)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
