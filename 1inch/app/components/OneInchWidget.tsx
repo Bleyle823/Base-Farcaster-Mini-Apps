@@ -92,32 +92,28 @@ export function OneInchWidget() {
   };
 
   // Handle JSON-RPC requests from the widget
-  const handleJsonRpcRequest = async (request: any, provider: any) => {
+  const handleJsonRpcRequest = async (request: any, provider: any, iframe: HTMLIFrameElement) => {
     try {
       const result = await provider.request(request);
       
       // Send response back to iframe
-      if (request.source === iframe.contentWindow) {
-        iframe.contentWindow?.postMessage({
-          jsonrpc: '2.0',
-          id: request.id,
-          result
-        }, '*');
-      }
+      iframe.contentWindow?.postMessage({
+        jsonrpc: '2.0',
+        id: request.id,
+        result
+      }, '*');
     } catch (error) {
       console.error('JSON-RPC request failed:', error);
       
       // Send error response back to iframe
-      if (request.source === iframe.contentWindow) {
-        iframe.contentWindow?.postMessage({
-          jsonrpc: '2.0',
-          id: request.id,
-          error: {
-            code: -32603,
-            message: 'Internal error'
-          }
-        }, '*');
-      }
+      iframe.contentWindow?.postMessage({
+        jsonrpc: '2.0',
+        id: request.id,
+        error: {
+          code: -32603,
+          message: 'Internal error'
+        }
+      }, '*');
     }
   };
 
