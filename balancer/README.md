@@ -1,11 +1,24 @@
-# MiniKit Template
+# Balancer - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About Balancer
+
+Balancer is a decentralized exchange (DEX) and automated market maker (AMM) that enables customizable liquidity pools with multiple tokens and flexible weights. It's designed for advanced DeFi strategies and portfolio management.
+
+### Key Features
+- **Weighted Pools**: Customizable token weights in liquidity pools
+- **Multi-Token Pools**: Support for pools with 2-8 different tokens
+- **Stable Pools**: Optimized for stable assets with low slippage
+- **Liquidity Bootstrapping**: Launch new tokens with liquidity
+- **Smart Pool Contracts**: Programmable pool parameters
+- **BAL Token Rewards**: Earn BAL tokens for providing liquidity
+- **Vault Architecture**: Gas-efficient single contract for all pools
 
 ## Getting Started
 
@@ -89,23 +102,38 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your Balancer frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your Balancer Frame:
+   - Modify `page.tsx` to create your Balancer Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with Balancer SDK for pool and swap functionality
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## Balancer Integration
+
+This mini app can be extended to include:
+- Multi-token pool management
+- Weighted pool creation and customization
+- Stable pool swapping with low slippage
+- Liquidity bootstrapping for new tokens
+- BAL token staking and rewards
+- Portfolio rebalancing tools
+- Advanced DeFi strategy interfaces
+
 ## Learn More
 
+- [Balancer Documentation](https://docs.balancer.fi/)
+- [Balancer App](https://app.balancer.fi/)
+- [Balancer Protocol](https://balancer.fi/)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
