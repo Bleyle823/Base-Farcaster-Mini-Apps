@@ -1,11 +1,23 @@
-# MiniKit Template
+# SushiSwap - Farcaster Mini App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+A [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
 
 - [MiniKit](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit](https://www.base.org/builders/onchainkit)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Next.js](https://nextjs.org/docs)
+
+## About SushiSwap
+
+SushiSwap is a decentralized exchange (DEX) and DeFi ecosystem built on Ethereum and other EVM-compatible chains. It offers a comprehensive suite of DeFi products including token swapping, yield farming, lending, and cross-chain bridges.
+
+### Key Features
+- **Token Swapping**: Automated market maker (AMM) for ERC-20 token exchanges
+- **Yield Farming**: Earn SUSHI tokens by providing liquidity and staking
+- **Kashi Lending**: Borrow and lend assets with collateral
+- **Cross-Chain Bridge**: Transfer assets between different blockchains
+- **Trident Pools**: Advanced AMM with concentrated liquidity
+- **BentoBox**: Yield optimization and lending platform
 
 ## Getting Started
 
@@ -89,23 +101,37 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 
 ## Customization
 
-To get started building your own frame, follow these steps:
+To get started building your SushiSwap frame, follow these steps:
 
 1. Remove the DemoComponents:
    - Delete `components/DemoComponents.tsx`
    - Remove demo-related imports from `page.tsx`
 
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
+2. Start building your SushiSwap Frame:
+   - Modify `page.tsx` to create your SushiSwap Frame UI
    - Update theme variables in `theme.css`
    - Adjust MiniKit configuration in `providers.tsx`
+   - Integrate with SushiSwap SDK for swap and yield farming functionality
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
    - Share your frame with others to start building your community
 
+## SushiSwap Integration
+
+This mini app can be extended to include:
+- Token swapping with SushiSwap pools
+- Yield farming opportunities and APY displays
+- Liquidity pool management
+- Cross-chain bridge interface
+- SUSHI token staking and governance
+- Portfolio tracking and analytics
+
 ## Learn More
 
+- [SushiSwap Documentation](https://docs.sushi.com/)
+- [SushiSwap App](https://www.sushi.com/)
+- [SushiSwap GitHub](https://github.com/sushiswap)
 - [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
 - [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
