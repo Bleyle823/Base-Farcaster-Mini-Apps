@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
+import { useAccount } from "wagmi";
 import { Button } from "./DemoComponents";
 
 interface OneInchWidgetOptions {
@@ -14,8 +14,6 @@ interface OneInchWidgetOptions {
 
 export function OneInchWidget() {
   const { address, isConnected } = useAccount();
-  const { chain } = useNetwork();
-  const { switchNetwork } = useSwitchNetwork();
   const widgetHostRef = useRef<HTMLDivElement>(null);
   const [widgetOptions, setWidgetOptions] = useState<OneInchWidgetOptions>({
     chainId: 8453, // Base mainnet
@@ -44,7 +42,7 @@ export function OneInchWidget() {
 
   // Setup 1inch widget
   const setupWidget = () => {
-    if (!widgetHostRef.current || !isConnected || !chain) return;
+    if (!widgetHostRef.current || !isConnected) return;
 
     const provider = createEthereumProvider();
     if (!provider) return;
@@ -119,21 +117,11 @@ export function OneInchWidget() {
 
   // Setup widget when component mounts or dependencies change
   useEffect(() => {
-    if (isConnected && chain) {
+    if (isConnected) {
       const cleanup = setupWidget();
       return cleanup;
     }
-  }, [isConnected, chain, widgetOptions]);
-
-  // Handle network switching
-  const handleNetworkSwitch = async (newChainId: number) => {
-    try {
-      await switchNetwork?.(newChainId);
-      setWidgetOptions(prev => ({ ...prev, chainId: newChainId }));
-    } catch (error) {
-      console.error('Failed to switch network:', error);
-    }
-  };
+  }, [isConnected, widgetOptions]);
 
   // Update widget options
   const updateWidgetOptions = (updates: Partial<OneInchWidgetOptions>) => {
@@ -158,24 +146,7 @@ export function OneInchWidget() {
           Widget Configuration
         </h3>
         
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="block text-sm font-medium text-[var(--app-foreground-muted)] mb-2">
-              Network
-            </label>
-            <select
-              value={widgetOptions.chainId}
-              onChange={(e) => handleNetworkSwitch(Number(e.target.value))}
-              className="w-full px-3 py-2 bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-lg text-[var(--app-foreground)] focus:outline-none focus:ring-1 focus:ring-[var(--app-accent)]"
-            >
-              <option value={8453}>Base</option>
-              <option value={1}>Ethereum</option>
-              <option value={137}>Polygon</option>
-              <option value={10}>Optimism</option>
-              <option value={42161}>Arbitrum</option>
-            </select>
-          </div>
-          
+        <div className="grid grid-cols-1 gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium text-[var(--app-foreground-muted)] mb-2">
               Theme
@@ -189,6 +160,13 @@ export function OneInchWidget() {
               <option value="light">Light</option>
             </select>
           </div>
+        </div>
+        
+        <div className="mb-4 p-3 bg-[var(--app-accent-light)] rounded-lg">
+          <p className="text-sm text-[var(--app-foreground-muted)]">
+            <strong>Note:</strong> This widget is configured for Base network (Chain ID: 8453). 
+            Make sure your wallet is connected to Base to use the swap functionality.
+          </p>
         </div>
 
         <div className="grid grid-cols-3 gap-4">
@@ -258,34 +236,7 @@ export function OneInchWidget() {
         </div>
       </div>
 
-      {/* Current Network Info */}
-      <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-xl shadow-lg border border-[var(--app-card-border)] p-5">
-        <h3 className="text-lg font-medium text-[var(--app-foreground)] mb-4">
-          Current Network
-        </h3>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <div className={`w-3 h-3 rounded-full ${
-              chain?.id === widgetOptions.chainId ? 'bg-green-500' : 'bg-red-500'
-            }`}></div>
-            <span className="text-[var(--app-foreground-muted)]">
-              {chain?.id === widgetOptions.chainId ? 'Connected' : 'Mismatch'}
-            </span>
-          </div>
-          <span className="text-[var(--app-foreground)]">
-            {chain?.name || 'Unknown'} (ID: {chain?.id})
-          </span>
-        </div>
-        
-        {chain?.id !== widgetOptions.chainId && (
-          <Button
-            onClick={() => handleNetworkSwitch(widgetOptions.chainId)}
-            className="mt-3"
-          >
-            Switch to {widgetOptions.chainId === 8453 ? 'Base' : `Network ${widgetOptions.chainId}`}
-          </Button>
-        )}
-      </div>
+
     </div>
   );
 }
