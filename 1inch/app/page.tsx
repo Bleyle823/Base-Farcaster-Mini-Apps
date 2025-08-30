@@ -97,6 +97,41 @@ export default function App() {
         </header>
 
         <main className="flex-1">
+          {/* Tab Navigation */}
+          <div className="flex space-x-1 mb-6 bg-[var(--app-card-bg)] rounded-lg p-1 border border-[var(--app-card-border)]">
+            <button
+              onClick={() => setActiveTab("1inch")}
+              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                activeTab === "1inch"
+                  ? "bg-[var(--app-accent)] text-[var(--app-background)]"
+                  : "text-[var(--app-foreground-muted)] hover:text-[var(--app-foreground)]"
+              }`}
+            >
+              1inch Swap
+            </button>
+            <button
+              onClick={() => setActiveTab("home")}
+              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                activeTab === "home"
+                  ? "bg-[var(--app-accent)] text-[var(--app-background)]"
+                  : "text-[var(--app-foreground-muted)] hover:text-[var(--app-foreground)]"
+              }`}
+            >
+              Demo
+            </button>
+            <button
+              onClick={() => setActiveTab("features")}
+              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                activeTab === "features"
+                  ? "bg-[var(--app-accent)] text-[var(--app-background)]"
+                  : "text-[var(--app-foreground-muted)] hover:text-[var(--app-foreground)]"
+              }`}
+            >
+              Features
+            </button>
+          </div>
+
+          {/* Tab Content */}
           {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
           {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
           {activeTab === "1inch" && <OneInchWidget />}
