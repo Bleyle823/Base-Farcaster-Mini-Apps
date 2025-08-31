@@ -56,7 +56,7 @@ export function FarcasterWalletProvider({ children }: FarcasterWalletProviderPro
       setIsLoading(true);
       setError(null);
       
-      // Try to connect to Farcaster wallet (injected)
+      // Try to connect to any injected wallet
       await connect({
         connector: injected(),
       });
@@ -86,29 +86,20 @@ export function FarcasterWalletProvider({ children }: FarcasterWalletProviderPro
 
   const fetchFarcasterUserData = async (userAddress: string) => {
     try {
-      // Try to fetch Farcaster user data from various sources
-      const responses = await Promise.allSettled([
-        // Try Warpcast API
-        fetch(`https://api.warpcast.com/v2/user-by-address?address=${userAddress}`),
-        // Try Neynar API (if you have an API key)
-        // fetch(`https://api.neynar.com/v2/farcaster/user/bulk-by-address?addresses=${userAddress}`, {
-        //   headers: { 'api_key': process.env.NEXT_PUBLIC_NEYNAR_API_KEY || '' }
-        // }),
-      ]);
-
-      for (const response of responses) {
-        if (response.status === 'fulfilled' && response.value.ok) {
-          const data = await response.value.json();
-          
-          if (data.user) {
-            setFarcasterUser({
-              fid: data.user.fid,
-              username: data.user.username,
-              displayName: data.user.displayName,
-              pfp: data.user.pfp?.url,
-            });
-            return;
-          }
+      // Try to fetch Farcaster user data from Warpcast API
+      const response = await fetch(`https://api.warpcast.com/v2/user-by-address?address=${userAddress}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data.user) {
+          setFarcasterUser({
+            fid: data.user.fid,
+            username: data.user.username,
+            displayName: data.user.displayName,
+            pfp: data.user.pfp?.url,
+          });
+          return;
         }
       }
 
