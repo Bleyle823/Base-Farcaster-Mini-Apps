@@ -16,6 +16,7 @@ import {
   TransactionStatus,
 } from "@coinbase/onchainkit/transaction";
 import { useNotification } from "@coinbase/onchainkit/minikit";
+import { SquidWidget } from "@0xsquid/widget";
 
 type ButtonProps = {
   children: ReactNode;
