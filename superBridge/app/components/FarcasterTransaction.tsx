@@ -45,8 +45,8 @@ export function FarcasterTransaction() {
     }
   }, [address, amount, recipient]);
 
-  // Write contract (transaction)
-  const { writeContract, isPending: isWriting, data: hash } = useWriteContract({
+  // Send transaction
+  const { sendTransaction, isPending: isWriting, data: hash } = useSendTransaction({
     mutation: {
       onError: (error) => {
         console.error("Transaction failed:", error);
