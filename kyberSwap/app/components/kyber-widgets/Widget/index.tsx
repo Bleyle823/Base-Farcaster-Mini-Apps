@@ -44,8 +44,8 @@ import {
 
 import { NATIVE_TOKEN, NATIVE_TOKEN_ADDRESS, SUPPORTED_NETWORKS, TokenInfo, ZIndex } from '../constants'
 import SelectCurrency from '../SelectCurrency'
-import { Web3Provider, useActiveWeb3 } from '../../hooks/useWeb3Provider'
-import useSwap from '../../hooks/useSwap'
+import { Web3Provider, useActiveWeb3 } from '../hooks/useWeb3Provider'
+import useSwap from '../hooks/useSwap'
 import useTokenBalances from '../../hooks/useTokenBalances'
 import useApproval, { APPROVAL_STATE } from '../../hooks/useApproval'
 import Settings from '../Settings'
