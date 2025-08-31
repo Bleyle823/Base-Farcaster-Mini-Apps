@@ -32,19 +32,16 @@ export default function KyberSwapWidget() {
     primary: "#FFFFFF",
     dialog: "#FBFBFB",
     secondary: "#F5F5F5",
-    interactive: "#E5E5E5",
-    outline: "#E5E5E5",
+    interactive: "#FFFFFF",
+    stroke: "#0052FF",
     accent: "#0052FF",
     success: "#00C896",
     warning: "#FF6B35",
     error: "#FF3B69",
-    chart: "#0052FF",
-    chartOther: "#E5E5E5",
     fontFamily: "Inter",
     borderRadius: "12px",
     buttonRadius: "12px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.04)",
-    buttonPadding: "12px 24px",
   };
 
   if (!isConnected) {
