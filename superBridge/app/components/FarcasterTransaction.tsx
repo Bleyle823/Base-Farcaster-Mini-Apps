@@ -12,7 +12,7 @@ import { useNotification } from "@coinbase/onchainkit/minikit";
 interface TransactionData {
   to: string;
   value: bigint;
-  data?: string;
+  data?: `0x${string}`;
 }
 
 export function FarcasterTransaction() {
@@ -36,7 +36,7 @@ export function FarcasterTransaction() {
       setTransactionData({
         to: recipient,
         value,
-        data: "0x", // Simple ETH transfer
+        data: "0x" as `0x${string}`, // Simple ETH transfer
       });
       setIsPreparing(false);
     } catch (error) {
