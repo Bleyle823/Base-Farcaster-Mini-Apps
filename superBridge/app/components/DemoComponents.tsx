@@ -298,6 +298,32 @@ export function Home({ setActiveTab }: HomeProps) {
           </div>
         </Card>
       </div>
+
+      {/* Farcaster Wallet CTA */}
+      <Card title="Farcaster Wallet Integration" className="max-w-4xl mx-auto bg-gradient-to-r from-[var(--app-accent-light)]/20 to-[var(--app-accent-light)]/10 border-[var(--app-accent)]/30">
+        <div className="text-center space-y-6">
+          <div className="w-20 h-20 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center mx-auto">
+            <Icon name="heart" size="lg" className="text-[var(--app-accent)]" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-bold text-[var(--app-foreground)] mb-3">
+              Connect Your Farcaster Wallet
+            </h3>
+            <p className="text-[var(--app-foreground-muted)] text-lg max-w-2xl mx-auto mb-6">
+              Experience seamless transactions with your Farcaster wallet. Send ETH, view your balance, and manage your assets all in one place.
+            </p>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => setActiveTab("transactions")}
+              className="px-8 py-4 text-lg hover:scale-105 transition-all duration-200"
+              icon={<Icon name="arrow-right" size="sm" />}
+            >
+              Start Transacting
+            </Button>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 }
