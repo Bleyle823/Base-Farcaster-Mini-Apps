@@ -176,6 +176,8 @@ export function Home({ setActiveTab }: HomeProps) {
       <TodoList />
 
       <TransactionCard />
+
+      <SquidWidgetCard />
     </div>
   );
 }
@@ -456,6 +458,26 @@ function TransactionCard() {
               Connect your wallet to send a transaction
             </p>
           )}
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+function SquidWidgetCard() {
+  return (
+    <Card title="Squid Router - Cross-Chain Swaps">
+      <div className="space-y-4">
+        <p className="text-[var(--app-foreground-muted)] mb-4">
+          Use Squid Router to swap tokens across different blockchains seamlessly.
+        </p>
+        <div className="w-full h-[600px]">
+          <SquidWidget
+            config={{
+              integratorId: "squid-router-mini-app",
+              apiUrl: "https://apiplus.squidrouter.com"
+            }}
+          />
         </div>
       </div>
     </Card>
