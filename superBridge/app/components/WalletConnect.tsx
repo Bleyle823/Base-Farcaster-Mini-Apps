@@ -102,9 +102,9 @@ export function WalletConnect() {
       size="sm"
       onClick={connect}
       className="bg-[var(--app-accent)] hover:bg-[var(--app-accent-hover)] text-[var(--app-background)] shadow-lg hover:shadow-xl transition-all duration-200"
-      icon={<Icon name="plus" size="sm" />}
+      icon={<Icon name="wallet" size="sm" />}
     >
-      Connect Farcaster
+      Connect Wallet
     </Button>
   );
 }
