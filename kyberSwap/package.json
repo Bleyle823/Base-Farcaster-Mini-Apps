@@ -17,12 +17,14 @@
     "react-dom": "^18",
     "@tanstack/react-query": "^5",
     "viem": "^2.27.2",
-    "wagmi": "^2.16.0"
+    "wagmi": "^2.16.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/styled-components": "^5.1.26",
     "eslint": "^8",
     "eslint-config-next": "15.3.3",
     "eslint-config-prettier": "^10.1.1",
