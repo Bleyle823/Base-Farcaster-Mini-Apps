@@ -38,7 +38,7 @@ export default function App() {
           variant="ghost"
           size="sm"
           onClick={handleAddFrame}
-          className="text-[var(--app-accent)] p-4"
+          className="text-[var(--app-accent)] p-4 hover:bg-[var(--app-accent-light)] transition-all duration-200"
           icon={<Icon name="plus" size="sm" />}
         >
           Save Frame
@@ -59,23 +59,25 @@ export default function App() {
   }, [context, frameAdded, handleAddFrame]);
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme from-[var(--app-background)] to-[var(--app-gray)]">
-      <div className="w-full max-w-md mx-auto px-4 py-3">
-        <header className="flex justify-end items-center mb-3 h-11">
-          <div>{saveFrameButton}</div>
+    <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme bg-gradient-to-br from-[var(--app-background)] via-[var(--app-gray)] to-[var(--app-background)]">
+      <div className="w-full px-6 py-6">
+        <header className="flex justify-end items-center mb-6 h-14">
+          <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-2xl px-4 py-2 border border-[var(--app-card-border)] shadow-lg">
+            {saveFrameButton}
+          </div>
         </header>
 
-        <main className="flex-1">
+        <main className="flex-1 max-w-6xl mx-auto">
           {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
           {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
           {activeTab === "widgets" && <WidgetsDemo setActiveTab={setActiveTab} />}
         </main>
 
-        <footer className="mt-2 pt-4 flex justify-center">
+        <footer className="mt-8 pt-6 flex justify-center">
           <Button
             variant="ghost"
             size="sm"
-            className="text-[var(--ock-text-foreground-muted)] text-xs"
+            className="text-[var(--ock-text-foreground-muted)] text-sm hover:text-[var(--app-accent)] transition-colors duration-200"
             onClick={() => openUrl("https://base.org/builders/minikit")}
           >
             Built on Base with MiniKit
