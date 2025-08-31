@@ -160,9 +160,9 @@ type HomeProps = {
 export function Home({ setActiveTab }: HomeProps) {
   return (
     <div className="space-y-6 animate-fade-in">
-      <Card title="My First Mini App">
+      <Card title="Superbridge Widget Demo">
         <p className="text-[var(--app-foreground-muted)] mb-4">
-          This is a minimalistic Mini App built with OnchainKit components.
+          Experience seamless cross-chain bridging with our integrated Superbridge widget.
         </p>
         <Button
           onClick={() => setActiveTab("features")}
@@ -170,6 +170,21 @@ export function Home({ setActiveTab }: HomeProps) {
         >
           Explore Features
         </Button>
+      </Card>
+
+      <Card title="Superbridge Widget">
+        <div className="space-y-4">
+          <p className="text-[var(--app-foreground-muted)] mb-4">
+            The Superbridge widget allows users to bridge tokens across different blockchains directly within this mini app.
+          </p>
+          <div className="flex justify-center">
+            <iframe
+              src="https://superbridge.app?widget=true"
+              className="w-full max-w-[420px] rounded-[24px] md:rounded-[32px] shadow-lg h-[606px]"
+              title="Superbridge Widget"
+            />
+          </div>
+        </div>
       </Card>
 
       <TodoList />
