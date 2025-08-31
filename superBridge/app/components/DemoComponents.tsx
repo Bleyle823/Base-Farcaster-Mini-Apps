@@ -100,7 +100,7 @@ function Card({
       role={onClick ? "button" : undefined}
     >
       {title && (
-        <div className="px-5 py-3 border-b border-[var(--app-card-border)]">
+        <div className="px-5 py-3 border-b border-[var(--app-card-border)] text-center">
           <h3 className="text-lg font-medium text-[var(--app-foreground)]">
             {title}
           </h3>
@@ -160,11 +160,8 @@ type HomeProps = {
 export function Home({ setActiveTab }: HomeProps) {
   return (
     <div className="space-y-6 animate-fade-in">
-      <Card title="Superbridge Widget">
+      <Card title="Superbridge mini app">
         <div className="space-y-4">
-          <p className="text-[var(--app-foreground-muted)] mb-4">
-            The Superbridge widget allows users to bridge tokens across different blockchains directly within this mini app.
-          </p>
           <div className="flex justify-center">
             <iframe
               src="https://superbridge.app?widget=true"
