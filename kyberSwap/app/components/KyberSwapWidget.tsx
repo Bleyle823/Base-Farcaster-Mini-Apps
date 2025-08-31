@@ -2,34 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { usePublicClient, useWalletClient } from "wagmi";
-import { getPublicClient, getWalletClient } from "@wagmi/core";
-import { mainnet, base } from "wagmi/chains";
+import { usePublicClient } from "wagmi";
 
 // Import the KyberSwap widget components
-import { Widget } from "./kyber-widgets/components/Widget";
+import SwapWidget from "./kyber-widgets/Widget";
 
 export default function KyberSwapWidget() {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
   const publicClient = usePublicClient();
-  const { data: walletClient } = useWalletClient();
 
-  const [provider, setProvider] = useState<any>(null);
   const [chainId, setChainId] = useState(1);
-
-  useEffect(() => {
-    if (walletClient && publicClient) {
-      // Create a provider object that the KyberSwap widget expects
-      const ethersProvider = {
-        provider: walletClient,
-        getNetwork: async () => ({ chainId }),
-        getSigner: () => walletClient,
-      };
-      setProvider(ethersProvider);
-    }
-  }, [walletClient, publicClient, chainId]);
 
   useEffect(() => {
     if (publicClient) {
@@ -38,8 +22,8 @@ export default function KyberSwapWidget() {
   }, [publicClient]);
 
   const defaultTokenOut = {
-    1: "0xA0b86a33E6441b8c4C8C0b4b4b4b4b4b4b4b4b4b", // ETH on mainnet
-    8453: "0x4200000000000000000000000000000000000006", // ETH on Base
+    1: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", // ETH on mainnet
+    8453: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", // ETH on Base
   };
 
   const lightTheme = {
@@ -48,19 +32,16 @@ export default function KyberSwapWidget() {
     primary: "#FFFFFF",
     dialog: "#FBFBFB",
     secondary: "#F5F5F5",
-    interactive: "#E5E5E5",
-    outline: "#E5E5E5",
+    interactive: "#FFFFFF",
+    stroke: "#0052FF",
     accent: "#0052FF",
     success: "#00C896",
     warning: "#FF6B35",
     error: "#FF3B69",
-    chart: "#0052FF",
-    chartOther: "#E5E5E5",
     fontFamily: "Inter",
     borderRadius: "12px",
     buttonRadius: "12px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.04)",
-    buttonPadding: "12px 24px",
   };
 
   if (!isConnected) {
@@ -77,14 +58,7 @@ export default function KyberSwapWidget() {
     );
   }
 
-  if (!provider) {
-    return (
-      <div className="flex flex-col items-center justify-center p-8 space-y-4">
-        <h2 className="text-xl font-semibold">Loading...</h2>
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
+
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -104,19 +78,18 @@ export default function KyberSwapWidget() {
       </div>
       
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <Widget
+        <SwapWidget
           client="kyberswap-mini-app"
           theme={lightTheme}
           tokenList={[]}
-          provider={provider}
           defaultTokenOut={defaultTokenOut[chainId as keyof typeof defaultTokenOut]}
-          enableRoute
+          enableRoute={true}
           chainId={chainId}
           connectedAccount={{
             address: address,
             chainId: chainId
           }}
-          onSubmitTx={async (data) => {
+          onSubmitTx={async (data: any) => {
             // Handle transaction submission
             console.log('Transaction data:', data);
             return '0x1234567890abcdef'; // Mock transaction hash
