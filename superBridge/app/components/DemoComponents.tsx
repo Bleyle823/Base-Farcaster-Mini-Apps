@@ -100,7 +100,7 @@ function Card({
       role={onClick ? "button" : undefined}
     >
       {title && (
-        <div className="px-5 py-3 border-b border-[var(--app-card-border)]">
+        <div className="px-5 py-3 border-b border-[var(--app-card-border)] text-center">
           <h3 className="text-lg font-medium text-[var(--app-foreground)]">
             {title}
           </h3>
