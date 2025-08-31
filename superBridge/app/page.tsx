@@ -11,6 +11,7 @@ import { Icon } from "./components/DemoComponents";
 import { Home } from "./components/DemoComponents";
 import { Features } from "./components/DemoComponents";
 import { WidgetsDemo } from "./components/SuperbridgeWidget";
+import { WalletConnect } from "./components/WalletConnect";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
@@ -61,7 +62,10 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme bg-gradient-to-br from-[var(--app-background)] via-[var(--app-gray)] to-[var(--app-background)]">
       <div className="w-full px-6 py-6">
-        <header className="flex justify-end items-center mb-6 h-14">
+        <header className="flex justify-between items-center mb-6 h-14">
+          <div className="flex items-center space-x-4">
+            <WalletConnect />
+          </div>
           <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-2xl px-4 py-2 border border-[var(--app-card-border)] shadow-lg">
             {saveFrameButton}
           </div>
