@@ -17,7 +17,7 @@ A comprehensive collection of mini applications for popular decentralized exchan
 |-----|--------|----------|--------|
 | **1inch** | Ethereum, Polygon, BSC, Arbitrum | Aggregated swaps, best rates | ❌ Live |
 | **Balancer** | Ethereum, Polygon, Arbitrum | Weighted pools, LBP | ❌ Live |
-| **deBridge** | Multi-chain | Cross-chain swaps, bridging | ❌ Live |
+| **deBridge** | Multi-chain | Cross-chain swaps, bridging |✅  Live |
 | **KyberSwap** | Ethereum, Polygon, BSC, Arbitrum | Dynamic MM, limit orders | ❌ Live |
 | **PancakeSwap** | BSC, Ethereum, Arbitrum | AMM, farms, pools | ❌ Live |
 | **QuickSwap** | Polygon, Ethereum | Dragon's Lair, dual rewards | ❌ Live |
