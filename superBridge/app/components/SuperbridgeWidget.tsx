@@ -15,7 +15,7 @@ export const SuperbridgeWidget = ({
   return (
     <iframe
       src={src}
-      className={`w-full max-w-[420px] rounded-[24px] md:rounded-[32px] shadow-lg h-[606px] ${className}`}
+      className={`w-full max-w-[600px] rounded-[24px] md:rounded-[32px] shadow-2xl h-[700px] border-2 border-[var(--app-card-border)] ${className}`}
       title="Superbridge Widget"
     />
   );
@@ -85,51 +85,59 @@ export const WidgetsDemo = ({ setActiveTab }: { setActiveTab: (tab: string) => v
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">Superbridge Widget Demos</h1>
-          <p className="text-[var(--app-foreground-muted)]">
-            Explore different widget configurations and use cases
-          </p>
-        </div>
+    <div className="space-y-8 animate-fade-in max-w-6xl mx-auto">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-[var(--app-foreground)] mb-4 bg-gradient-to-r from-[var(--app-accent)] to-[var(--app-accent-hover)] bg-clip-text text-transparent">
+          Widget Demos
+        </h1>
+        <p className="text-xl text-[var(--app-foreground-muted)] max-w-3xl mx-auto mb-6">
+          Explore different Superbridge widget configurations and use cases
+        </p>
         <Button
           onClick={() => setActiveTab("home")}
-          variant="ghost"
+          variant="outline"
+          size="lg"
           icon={<Icon name="arrow-right" size="sm" className="rotate-180" />}
+          className="px-8 py-3 text-lg hover:bg-[var(--app-accent)] hover:text-[var(--app-background)] transition-all duration-200"
         >
           Back to Home
         </Button>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="space-y-4">
-          <h2 className="text-lg font-semibold">Widget Variants</h2>
-          <div className="flex flex-wrap gap-2">
-            {Object.entries(widgets).map(([key, { title, description }]) => (
-              <div key={key} className="w-full">
-                <Button
-                  variant={activeWidget === key ? "primary" : "outline"}
-                  size="sm"
-                  onClick={() => setActiveWidget(key)}
-                  className="w-full justify-start text-left"
-                >
-                  {title}
-                </Button>
-                {activeWidget === key && (
-                  <p className="text-sm text-[var(--app-foreground-muted)] mt-2 px-2">
-                    {description}
-                  </p>
-                )}
-              </div>
-            ))}
+      <div className="grid gap-8 lg:grid-cols-3">
+        <div className="lg:col-span-1 space-y-6">
+          <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-2xl p-6 border border-[var(--app-card-border)] shadow-lg">
+            <h2 className="text-xl font-semibold text-[var(--app-foreground)] mb-4">Widget Variants</h2>
+            <div className="space-y-3">
+              {Object.entries(widgets).map(([key, { title, description }]) => (
+                <div key={key} className="space-y-2">
+                  <Button
+                    variant={activeWidget === key ? "primary" : "outline"}
+                    size="md"
+                    onClick={() => setActiveWidget(key)}
+                    className="w-full justify-start text-left h-auto py-3 px-4"
+                  >
+                    <div className="text-left">
+                      <div className="font-medium">{title}</div>
+                      {activeWidget === key && (
+                        <div className="text-xs text-[var(--app-foreground-muted)] mt-1 opacity-80">
+                          {description}
+                        </div>
+                      )}
+                    </div>
+                  </Button>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
-        <div className="space-y-4">
-          <h2 className="text-lg font-semibold">Live Preview</h2>
-          <div className="flex justify-center">
-            {widgets[activeWidget as keyof typeof widgets]?.component}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-2xl p-6 border border-[var(--app-card-border)] shadow-lg">
+            <h2 className="text-xl font-semibold text-[var(--app-foreground)] mb-4">Live Preview</h2>
+            <div className="flex justify-center">
+              {widgets[activeWidget as keyof typeof widgets]?.component}
+            </div>
           </div>
         </div>
       </div>
