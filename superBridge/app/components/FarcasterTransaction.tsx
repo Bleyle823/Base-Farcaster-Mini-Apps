@@ -46,7 +46,13 @@ export function FarcasterTransaction() {
   }, [address, amount, recipient]);
 
   // Write contract (transaction)
-  const { writeContract, isPending: isWriting, data: hash } = useWriteContract();
+  const { writeContract, isPending: isWriting, data: hash } = useWriteContract({
+    mutation: {
+      onError: (error) => {
+        console.error("Transaction failed:", error);
+      },
+    },
+  });
 
   // Wait for transaction receipt
   const { isLoading: isConfirming, isSuccess, isError, error } = useWaitForTransactionReceipt({
@@ -60,7 +66,7 @@ export function FarcasterTransaction() {
       writeContract({
         to: transactionData.to as `0x${string}`,
         value: transactionData.value,
-        data: transactionData.data,
+        data: transactionData.data || "0x",
       });
     } catch (err) {
       console.error("Transaction failed:", err);
