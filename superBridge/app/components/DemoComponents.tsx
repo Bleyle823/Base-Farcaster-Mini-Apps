@@ -419,6 +419,23 @@ export function Icon({ name, size = "md", className = "" }: IconProps) {
         <polyline points="12 5 19 12 12 19" />
       </svg>
     ),
+    wallet: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <title>Wallet</title>
+        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+        <path d="M3 7v12a2 2 0 0 0 2 2h16v-5" />
+        <path d="M18 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v-6a2 2 0 0 0-2-2z" />
+      </svg>
+    ),
   };
 
   return (
