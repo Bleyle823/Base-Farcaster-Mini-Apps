@@ -63,17 +63,15 @@ export function FarcasterTransaction() {
     if (!transactionData || !address) return;
 
     try {
-      writeContract({
-        address: transactionData.to as `0x${string}`,
-        abi: [],
-        functionName: 'transfer',
-        args: [],
+      sendTransaction({
+        to: transactionData.to as `0x${string}`,
         value: transactionData.value,
+        data: transactionData.data || "0x",
       });
     } catch (err) {
       console.error("Transaction failed:", err);
     }
-  }, [writeContract, transactionData, address]);
+  }, [sendTransaction, transactionData, address]);
 
   const handleSuccess = useCallback(async () => {
     if (hash) {
