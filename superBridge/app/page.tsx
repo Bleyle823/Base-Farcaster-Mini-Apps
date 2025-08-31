@@ -94,7 +94,7 @@ export default function App() {
               { id: "home", label: "Home", icon: "heart" },
               { id: "features", label: "Features", icon: "star" },
               { id: "widgets", label: "Widgets", icon: "check" },
-              { id: "transactions", label: "Transactions", icon: "arrow-right" },
+              { id: "transactions", label: "Transactions", icon: "wallet" },
             ].map((tab) => (
               <Button
                 key={tab.id}
