@@ -201,7 +201,7 @@ enum AllowanceType {
   EXACT = 'exact',
 }
 
-const Widget = ({
+const InternalWidget = ({
   defaultTokenIn,
   defaultTokenOut,
   defaultSlippage,
@@ -836,7 +836,7 @@ export default function SwapWidget({
       <ThemeProvider theme={theme || defaultTheme}>
         <Web3Provider chainId={chainId} connectedAccount={connectedAccount} rpcUrl={rpcUrl} onSubmitTx={onSubmitTx}>
           <TokenListProvider tokenList={tokenList}>
-            <Widget
+            <InternalWidget
               defaultTokenIn={defaultTokenIn}
               defaultAmountIn={defaultAmountIn}
               defaultTokenOut={defaultTokenOut}
