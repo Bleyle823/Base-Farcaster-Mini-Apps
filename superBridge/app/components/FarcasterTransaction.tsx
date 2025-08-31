@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useMemo, useState } from "react";
-import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { useAccount, useBalance, useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther, formatEther } from "viem";
 import { Button } from "./DemoComponents";
 import { Icon } from "./DemoComponents";
@@ -64,9 +64,11 @@ export function FarcasterTransaction() {
 
     try {
       writeContract({
-        to: transactionData.to as `0x${string}`,
+        address: transactionData.to as `0x${string}`,
+        abi: [],
+        functionName: 'transfer',
+        args: [],
         value: transactionData.value,
-        data: transactionData.data || "0x",
       });
     } catch (err) {
       console.error("Transaction failed:", err);
