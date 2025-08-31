@@ -4,7 +4,7 @@ export function formatUnits(value: string, decimals: number): string {
   const quotient = bigValue / divisor;
   const remainder = bigValue % divisor;
   
-  if (remainder === 0n) {
+  if (remainder === BigInt(0)) {
     return quotient.toString();
   }
   
