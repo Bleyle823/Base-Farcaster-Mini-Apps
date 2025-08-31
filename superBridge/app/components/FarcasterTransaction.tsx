@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useMemo, useState } from "react";
-import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { useAccount, useBalance, useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther, formatEther } from "viem";
 import { Button } from "./DemoComponents";
 import { Icon } from "./DemoComponents";
@@ -12,12 +12,14 @@ import { useNotification } from "@coinbase/onchainkit/minikit";
 interface TransactionData {
   to: string;
   value: bigint;
-  data?: string;
+  data?: `0x${string}`;
 }
 
 export function FarcasterTransaction() {
   const { isConnected, address, farcasterUser } = useFarcasterWallet();
-  const { data: balanceData } = useBalance({ address, watch: true });
+  const { data: balanceData } = useBalance({ 
+    address: address as `0x${string}` | undefined
+  });
   const [amount, setAmount] = useState("");
   const [recipient, setRecipient] = useState("");
   const [transactionData, setTransactionData] = useState<TransactionData | null>(null);
@@ -34,7 +36,7 @@ export function FarcasterTransaction() {
       setTransactionData({
         to: recipient,
         value,
-        data: "0x", // Simple ETH transfer
+        data: "0x" as `0x${string}`, // Simple ETH transfer
       });
       setIsPreparing(false);
     } catch (error) {
@@ -43,8 +45,14 @@ export function FarcasterTransaction() {
     }
   }, [address, amount, recipient]);
 
-  // Write contract (transaction)
-  const { writeContract, isPending: isWriting, data: hash } = useWriteContract();
+  // Send transaction
+  const { sendTransaction, isPending: isWriting, data: hash } = useSendTransaction({
+    mutation: {
+      onError: (error) => {
+        console.error("Transaction failed:", error);
+      },
+    },
+  });
 
   // Wait for transaction receipt
   const { isLoading: isConfirming, isSuccess, isError, error } = useWaitForTransactionReceipt({
@@ -55,15 +63,15 @@ export function FarcasterTransaction() {
     if (!transactionData || !address) return;
 
     try {
-      writeContract({
-        to: transactionData.to,
+      sendTransaction({
+        to: transactionData.to as `0x${string}`,
         value: transactionData.value,
-        data: transactionData.data,
+        data: transactionData.data || "0x",
       });
     } catch (err) {
       console.error("Transaction failed:", err);
     }
-  }, [writeContract, transactionData, address]);
+  }, [sendTransaction, transactionData, address]);
 
   const handleSuccess = useCallback(async () => {
     if (hash) {

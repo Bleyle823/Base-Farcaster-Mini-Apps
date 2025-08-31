@@ -49,7 +49,6 @@ export function FarcasterWalletProvider({ children }: FarcasterWalletProviderPro
   const { disconnect } = useDisconnect();
   const { data: balanceData } = useBalance({
     address,
-    watch: true,
   });
 
   const connectWallet = async () => {
