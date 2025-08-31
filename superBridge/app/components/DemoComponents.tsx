@@ -174,10 +174,6 @@ export function Home({ setActiveTab }: HomeProps) {
           </div>
         </div>
       </Card>
-
-      <TodoList />
-
-      <TransactionCard />
     </div>
   );
 }
