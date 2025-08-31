@@ -117,38 +117,112 @@ type FeaturesProps = {
 
 export function Features({ setActiveTab }: FeaturesProps) {
   return (
-    <div className="space-y-6 animate-fade-in">
-      <Card title="Key Features">
-        <ul className="space-y-3 mb-4">
-          <li className="flex items-start">
-            <Icon name="check" className="text-[var(--app-accent)] mt-1 mr-2" />
-            <span className="text-[var(--app-foreground-muted)]">
-              Minimalistic and beautiful UI design
-            </span>
-          </li>
-          <li className="flex items-start">
-            <Icon name="check" className="text-[var(--app-accent)] mt-1 mr-2" />
-            <span className="text-[var(--app-foreground-muted)]">
-              Responsive layout for all devices
-            </span>
-          </li>
-          <li className="flex items-start">
-            <Icon name="check" className="text-[var(--app-accent)] mt-1 mr-2" />
-            <span className="text-[var(--app-foreground-muted)]">
-              Dark mode support
-            </span>
-          </li>
-          <li className="flex items-start">
-            <Icon name="check" className="text-[var(--app-accent)] mt-1 mr-2" />
-            <span className="text-[var(--app-foreground-muted)]">
-              OnchainKit integration
-            </span>
-          </li>
-        </ul>
-        <Button variant="outline" onClick={() => setActiveTab("home")}>
+    <div className="space-y-8 animate-fade-in max-w-4xl mx-auto">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-[var(--app-foreground)] mb-4 bg-gradient-to-r from-[var(--app-accent)] to-[var(--app-accent-hover)] bg-clip-text text-transparent">
+          Features
+        </h1>
+        <p className="text-xl text-[var(--app-foreground-muted)] max-w-2xl mx-auto">
+          Discover what makes Superbridge the most advanced cross-chain bridge
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card title="Core Features" className="h-full">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="check" className="text-[var(--app-accent)]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[var(--app-foreground)] mb-1">Multi-Chain Bridging</h4>
+                  <p className="text-[var(--app-foreground-muted)] text-sm">
+                    Bridge assets between Ethereum, Base, Polygon, Arbitrum, and more
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="check" className="text-[var(--app-accent)]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[var(--app-foreground)] mb-1">Instant Finality</h4>
+                  <p className="text-[var(--app-foreground-muted)] text-sm">
+                    Get instant confirmation with our advanced settlement system
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="check" className="text-[var(--app-accent)]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[var(--app-foreground)] mb-1">Security First</h4>
+                  <p className="text-[var(--app-foreground-muted)] text-sm">
+                    Built with enterprise-grade security and audited smart contracts
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        <Card title="Advanced Capabilities" className="h-full">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="star" className="text-[var(--app-accent)]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[var(--app-foreground)] mb-1">Smart Routing</h4>
+                  <p className="text-[var(--app-foreground-muted)] text-sm">
+                    AI-powered routing for optimal gas fees and fastest paths
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="star" className="text-[var(--app-accent)]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[var(--app-foreground)] mb-1">Batch Transactions</h4>
+                  <p className="text-[var(--app-foreground-muted)] text-sm">
+                    Bridge multiple assets in a single transaction to save gas
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <div className="w-8 h-8 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="star" className="text-[var(--app-accent)]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[var(--app-foreground)] mb-1">24/7 Support</h4>
+                  <p className="text-[var(--app-foreground-muted)] text-sm">
+                    Round-the-clock customer support and monitoring
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      <div className="text-center">
+        <Button 
+          variant="outline" 
+          size="lg"
+          onClick={() => setActiveTab("home")}
+          className="px-8 py-3 text-lg hover:bg-[var(--app-accent)] hover:text-[var(--app-background)] transition-all duration-200"
+        >
           Back to Home
         </Button>
-      </Card>
+      </div>
     </div>
   );
 }
