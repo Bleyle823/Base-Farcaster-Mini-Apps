@@ -233,18 +233,71 @@ type HomeProps = {
 
 export function Home({ setActiveTab }: HomeProps) {
   return (
-    <div className="space-y-6 animate-fade-in">
-      <Card title="Superbridge mini app">
-        <div className="space-y-4">
+    <div className="space-y-8 animate-fade-in">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-[var(--app-foreground)] mb-4 bg-gradient-to-r from-[var(--app-accent)] to-[var(--app-accent-hover)] bg-clip-text text-transparent">
+          Superbridge
+        </h1>
+        <p className="text-xl text-[var(--app-foreground-muted)] max-w-2xl mx-auto">
+          Seamlessly bridge your assets across multiple chains with the most advanced cross-chain infrastructure
+        </p>
+      </div>
+
+      <Card title="Bridge Your Assets" className="max-w-5xl mx-auto">
+        <div className="space-y-6">
           <div className="flex justify-center">
             <iframe
               src="https://superbridge.app?widget=true"
-              className="w-full max-w-[420px] rounded-[24px] md:rounded-[32px] shadow-lg h-[606px]"
+              className="w-full max-w-[600px] rounded-[24px] md:rounded-[32px] shadow-2xl h-[700px] border-2 border-[var(--app-card-border)]"
               title="Superbridge Widget"
             />
           </div>
+          
+          <div className="text-center pt-4">
+            <p className="text-[var(--app-foreground-muted)] text-sm">
+              Powered by Superbridge - The most advanced cross-chain bridge infrastructure
+            </p>
+          </div>
         </div>
       </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <Card className="text-center hover:scale-105 transition-transform duration-200">
+          <div className="p-6">
+            <div className="w-16 h-16 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="star" size="lg" className="text-[var(--app-accent)]" />
+            </div>
+            <h3 className="text-lg font-semibold text-[var(--app-foreground)] mb-2">Multi-Chain Support</h3>
+            <p className="text-[var(--app-foreground-muted)] text-sm">
+              Bridge between Ethereum, Base, Polygon, and many more chains
+            </p>
+          </div>
+        </Card>
+
+        <Card className="text-center hover:scale-105 transition-transform duration-200">
+          <div className="p-6">
+            <div className="w-16 h-16 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" size="lg" className="text-[var(--app-accent)]" />
+            </div>
+            <h3 className="text-lg font-semibold text-[var(--app-foreground)] mb-2">Secure & Fast</h3>
+            <p className="text-[var(--app-foreground-muted)] text-sm">
+              Industry-leading security with lightning-fast transaction speeds
+            </p>
+          </div>
+        </Card>
+
+        <Card className="text-center hover:scale-105 transition-transform duration-200">
+          <div className="p-6">
+            <div className="w-16 h-16 bg-[var(--app-accent-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="heart" size="lg" className="text-[var(--app-accent)]" />
+            </div>
+            <h3 className="text-lg font-semibold text-[var(--app-foreground)] mb-2">User Friendly</h3>
+            <p className="text-[var(--app-foreground-muted)] text-sm">
+              Simple interface designed for both beginners and experts
+            </p>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }
