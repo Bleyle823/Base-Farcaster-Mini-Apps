@@ -99,6 +99,7 @@ export default function App() {
         <main className="flex-1">
           {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
           {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
+          {activeTab === "swap" && <KyberSwapWidget />}
         </main>
 
         <footer className="mt-2 pt-4 flex justify-center">
