@@ -58,7 +58,7 @@ export function FarcasterTransaction() {
 
     try {
       writeContract({
-        to: transactionData.to,
+        to: transactionData.to as `0x${string}`,
         value: transactionData.value,
         data: transactionData.data,
       });
