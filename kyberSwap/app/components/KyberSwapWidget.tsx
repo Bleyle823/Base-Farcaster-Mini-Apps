@@ -7,7 +7,7 @@ import { getPublicClient, getWalletClient } from "@wagmi/core";
 import { mainnet, base } from "wagmi/chains";
 
 // Import the KyberSwap widget components
-import { Widget } from "./kyber-widgets/Widget";
+import { Widget } from "./kyber-widgets/components/Widget";
 
 export default function KyberSwapWidget() {
   const { address, isConnected } = useAccount();
@@ -111,6 +111,16 @@ export default function KyberSwapWidget() {
           provider={provider}
           defaultTokenOut={defaultTokenOut[chainId as keyof typeof defaultTokenOut]}
           enableRoute
+          chainId={chainId}
+          connectedAccount={{
+            address: address,
+            chainId: chainId
+          }}
+          onSubmitTx={async (data) => {
+            // Handle transaction submission
+            console.log('Transaction data:', data);
+            return '0x1234567890abcdef'; // Mock transaction hash
+          }}
         />
       </div>
     </div>
