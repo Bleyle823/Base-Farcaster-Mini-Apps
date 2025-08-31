@@ -12,7 +12,7 @@ import AlertIcon from '../../assets/alert.svg'
 import Expand from '../../assets/expand.svg'
 import questionImg from '../../assets/question.svg?url'
 
-import useTheme from '../../hooks/useTheme'
+import useTheme from '../hooks/useTheme'
 
 import {
   AccountBalance,
