@@ -23,6 +23,7 @@ import { Button } from "./components/DemoComponents";
 import { Icon } from "./components/DemoComponents";
 import { Home } from "./components/DemoComponents";
 import { Features } from "./components/DemoComponents";
+import KyberSwapWidget from "./components/KyberSwapWidget";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
