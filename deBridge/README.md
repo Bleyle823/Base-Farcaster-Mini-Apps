@@ -100,19 +100,17 @@ The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
 - Sets up Frame SDK listeners
 - Applies Safe Area Insets
 
-## Customization
+## Current Implementation
 
-To get started building your deBridge frame, follow these steps:
+This deBridge mini app has been simplified to focus solely on the DeBridge cross-chain swap functionality:
 
-1. Remove the DemoComponents:
-   - Delete `components/DemoComponents.tsx`
-   - Remove demo-related imports from `page.tsx`
+✅ **Completed:**
+- Removed all demo components and unnecessary UI elements
+- Integrated DeBridge widget as the main and only component
+- Simplified the interface to focus on cross-chain swaps
+- Maintained MiniKit integration for Farcaster frame functionality
 
-2. Start building your deBridge Frame:
-   - Modify `page.tsx` to create your deBridge Frame UI
-   - Update theme variables in `theme.css`
-   - Adjust MiniKit configuration in `providers.tsx`
-   - Integrate with deBridge SDK for cross-chain functionality
+The app now provides a clean, focused interface for users to perform cross-chain token swaps using the DeBridge protocol.
 
 3. Add your frame to your account:
    - Cast your frame to see it in action
