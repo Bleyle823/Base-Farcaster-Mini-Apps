@@ -17,7 +17,10 @@ interface TransactionData {
 
 export function FarcasterTransaction() {
   const { isConnected, address, farcasterUser } = useFarcasterWallet();
-  const { data: balanceData } = useBalance({ address, watch: true });
+  const { data: balanceData } = useBalance({ 
+    address: address as `0x${string}` | undefined, 
+    watch: true 
+  });
   const [amount, setAmount] = useState("");
   const [recipient, setRecipient] = useState("");
   const [transactionData, setTransactionData] = useState<TransactionData | null>(null);
