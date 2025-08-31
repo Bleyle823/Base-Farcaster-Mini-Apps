@@ -1,6 +1,6 @@
 import { ReactNode, StrictMode, useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { defaultTheme, Theme } from '../../theme'
+import { defaultTheme, Theme } from '../theme'
 import SettingIcon from '../../assets/setting.svg'
 import WalletIcon from '../../assets/wallet.svg'
 import DropdownIcon from '../../assets/dropdown.svg'
@@ -42,7 +42,7 @@ import {
   ViewRouteTitle,
 } from './styled'
 
-import { NATIVE_TOKEN, NATIVE_TOKEN_ADDRESS, SUPPORTED_NETWORKS, TokenInfo, ZIndex } from '../../constants'
+import { NATIVE_TOKEN, NATIVE_TOKEN_ADDRESS, SUPPORTED_NETWORKS, TokenInfo, ZIndex } from '../constants'
 import SelectCurrency from '../SelectCurrency'
 import { Web3Provider, useActiveWeb3 } from '../../hooks/useWeb3Provider'
 import useSwap from '../../hooks/useSwap'
