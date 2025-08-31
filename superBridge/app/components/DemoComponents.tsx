@@ -160,27 +160,6 @@ type HomeProps = {
 export function Home({ setActiveTab }: HomeProps) {
   return (
     <div className="space-y-6 animate-fade-in">
-      <Card title="Superbridge Widget Demo">
-        <p className="text-[var(--app-foreground-muted)] mb-4">
-          Experience seamless cross-chain bridging with our integrated Superbridge widget.
-        </p>
-        <div className="flex gap-2">
-          <Button
-            onClick={() => setActiveTab("features")}
-            icon={<Icon name="arrow-right" size="sm" />}
-          >
-            Explore Features
-          </Button>
-          <Button
-            onClick={() => setActiveTab("widgets")}
-            variant="outline"
-            icon={<Icon name="star" size="sm" />}
-          >
-            Widget Demos
-          </Button>
-        </div>
-      </Card>
-
       <Card title="Superbridge Widget">
         <div className="space-y-4">
           <p className="text-[var(--app-foreground-muted)] mb-4">
