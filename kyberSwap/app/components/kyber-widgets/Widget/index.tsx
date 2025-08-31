@@ -57,7 +57,7 @@ import ImportModal from '../ImportModal'
 import InfoHelper from '../InfoHelper'
 import TradeRouting from '../TradeRouting'
 import Slippage from '../Slippage'
-import { formatUnits } from '../../utils/crypto'
+import { formatUnits } from '../utils/crypto'
 import Select from '../Select'
 
 export const DialogWrapper = styled.div`
