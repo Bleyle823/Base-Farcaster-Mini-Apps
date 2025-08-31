@@ -93,20 +93,20 @@ function Card({
 
   return (
     <div
-      className={`bg-[var(--app-card-bg)] backdrop-blur-md rounded-xl shadow-lg border border-[var(--app-card-border)] overflow-hidden transition-all hover:shadow-xl ${className} ${onClick ? "cursor-pointer" : ""}`}
+      className={`bg-[var(--app-card-bg)] backdrop-blur-md rounded-2xl shadow-xl border border-[var(--app-card-border)] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[var(--app-accent)]/20 ${className} ${onClick ? "cursor-pointer hover:scale-[1.02]" : ""}`}
       onClick={onClick}
       onKeyDown={onClick ? handleKeyDown : undefined}
       tabIndex={onClick ? 0 : undefined}
       role={onClick ? "button" : undefined}
     >
       {title && (
-        <div className="px-5 py-3 border-b border-[var(--app-card-border)] text-center">
-          <h3 className="text-lg font-medium text-[var(--app-foreground)]">
+        <div className="px-6 py-4 border-b border-[var(--app-card-border)] text-center bg-gradient-to-r from-[var(--app-accent-light)]/20 to-transparent">
+          <h3 className="text-xl font-semibold text-[var(--app-foreground)]">
             {title}
           </h3>
         </div>
       )}
-      <div className="p-5">{children}</div>
+      <div className="p-6">{children}</div>
     </div>
   );
 }
