@@ -329,7 +329,7 @@ export function Home({ setActiveTab }: HomeProps) {
 }
 
 type IconProps = {
-  name: "heart" | "star" | "check" | "plus" | "arrow-right";
+  name: "heart" | "star" | "check" | "plus" | "arrow-right" | "wallet";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
