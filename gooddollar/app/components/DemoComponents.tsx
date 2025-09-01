@@ -648,6 +648,16 @@ export function GoodDollarSavingsWidget() {
   return (
     <Card title="GoodDollar Savings" className="max-w-md mx-auto">
       <div className="space-y-6">
+        {/* Back Navigation */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => window.history.back()}
+          className="mb-2"
+        >
+          ← Back
+        </Button>
+        
         {/* Header */}
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
