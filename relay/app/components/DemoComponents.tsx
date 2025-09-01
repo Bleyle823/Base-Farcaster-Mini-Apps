@@ -2,6 +2,7 @@
 
 import { type ReactNode, useCallback, useMemo, useState } from "react";
 import { useAccount } from "wagmi";
+import RelayWidget from "./RelayWidget";
 import {
   Transaction,
   TransactionButton,
