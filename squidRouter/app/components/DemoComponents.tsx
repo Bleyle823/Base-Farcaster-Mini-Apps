@@ -483,11 +483,6 @@ function SquidWidgetCard() {
               integratorId: "squid-router-mini-app",
               apiUrl: "https://apiplus.squidrouter.com"
             }}
-            loadingComponent={
-              <div className="flex items-center justify-center h-full">
-                <div className="text-[var(--app-foreground-muted)]">Loading Squid Router...</div>
-              </div>
-            }
           />
         </div>
       </div>
