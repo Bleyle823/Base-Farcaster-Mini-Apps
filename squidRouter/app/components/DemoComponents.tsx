@@ -2,6 +2,7 @@
 
 import { type ReactNode, useCallback, useMemo, useState } from "react";
 import { useAccount } from "wagmi";
+import dynamic from "next/dynamic";
 import {
   Transaction,
   TransactionButton,
@@ -16,7 +17,12 @@ import {
   TransactionStatus,
 } from "@coinbase/onchainkit/transaction";
 import { useNotification } from "@coinbase/onchainkit/minikit";
-import { SquidWidget } from "@0xsquid/widget";
+
+// Dynamically import SquidWidget with no SSR to prevent document is not defined error
+const SquidWidget = dynamic(
+  () => import("@0xsquid/widget").then((mod) => ({ default: mod.SquidWidget })),
+  { ssr: false }
+);
 
 type ButtonProps = {
   children: ReactNode;
