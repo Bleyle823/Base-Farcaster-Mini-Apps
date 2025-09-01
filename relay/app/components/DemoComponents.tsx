@@ -154,6 +154,28 @@ export function Features({ setActiveTab }: FeaturesProps) {
   );
 }
 
+type RelayProps = {
+  setActiveTab: (tab: string) => void;
+};
+
+export function Relay({ setActiveTab }: RelayProps) {
+  return (
+    <div className="space-y-6 animate-fade-in">
+      <Card title="Relay Cross-Chain Swap">
+        <p className="text-[var(--app-foreground-muted)] mb-4">
+          Swap tokens across different blockchain networks using Relay Protocol.
+        </p>
+        <div className="mb-4">
+          <RelayWidget />
+        </div>
+        <Button variant="outline" onClick={() => setActiveTab("home")}>
+          Back to Home
+        </Button>
+      </Card>
+    </div>
+  );
+}
+
 type HomeProps = {
   setActiveTab: (tab: string) => void;
 };
@@ -165,12 +187,21 @@ export function Home({ setActiveTab }: HomeProps) {
         <p className="text-[var(--app-foreground-muted)] mb-4">
           This is a minimalistic Mini App built with OnchainKit components.
         </p>
-        <Button
-          onClick={() => setActiveTab("features")}
-          icon={<Icon name="arrow-right" size="sm" />}
-        >
-          Explore Features
-        </Button>
+        <div className="flex flex-col space-y-2">
+          <Button
+            onClick={() => setActiveTab("features")}
+            icon={<Icon name="arrow-right" size="sm" />}
+          >
+            Explore Features
+          </Button>
+          <Button
+            onClick={() => setActiveTab("relay")}
+            icon={<Icon name="arrow-right" size="sm" />}
+            variant="secondary"
+          >
+            Relay Swap
+          </Button>
+        </div>
       </Card>
 
       <TodoList />
