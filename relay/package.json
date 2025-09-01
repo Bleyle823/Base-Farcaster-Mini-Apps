@@ -17,7 +17,10 @@
     "react-dom": "^18",
     "@tanstack/react-query": "^5",
     "viem": "^2.27.2",
-    "wagmi": "^2.16.0"
+    "wagmi": "^2.16.0",
+    "@relayprotocol/relay-kit-ui": "^0.0.1",
+    "@rainbow-me/rainbowkit": "^2.0.0",
+    "@rainbow-me/rainbowkit-siwe": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^22",
