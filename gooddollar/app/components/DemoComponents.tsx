@@ -481,6 +481,7 @@ function TransactionCard() {
 // GoodDollar Savings Widget Component
 export function GoodDollarSavingsWidget() {
   const { address } = useAccount();
+  const [setActiveTab] = useState<(tab: string) => void>(() => () => {});
   const [activeTab, setActiveTab] = useState<'stake' | 'unstake'>('stake');
   const [inputAmount, setInputAmount] = useState('0.0');
   const [walletBalance, setWalletBalance] = useState<bigint>(BigInt(0));
