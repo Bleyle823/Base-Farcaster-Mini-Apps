@@ -145,9 +145,17 @@ export function Features({ setActiveTab }: FeaturesProps) {
             </span>
           </li>
         </ul>
-        <Button variant="outline" onClick={() => setActiveTab("home")}>
-          Back to Home
-        </Button>
+        <div className="space-y-3">
+          <Button variant="outline" onClick={() => setActiveTab("home")}>
+            Back to Home
+          </Button>
+          <Button
+            onClick={() => setActiveTab("savings")}
+            icon={<Icon name="star" size="sm" />}
+          >
+            GoodDollar Savings
+          </Button>
+        </div>
       </Card>
     </div>
   );
@@ -164,12 +172,21 @@ export function Home({ setActiveTab }: HomeProps) {
         <p className="text-[var(--app-foreground-muted)] mb-4">
           This is a minimalistic Mini App built with OnchainKit components.
         </p>
-        <Button
-          onClick={() => setActiveTab("features")}
-          icon={<Icon name="arrow-right" size="sm" />}
-        >
-          Explore Features
-        </Button>
+        <div className="space-y-3">
+          <Button
+            onClick={() => setActiveTab("features")}
+            icon={<Icon name="arrow-right" size="sm" />}
+          >
+            Explore Features
+          </Button>
+          <Button
+            onClick={() => setActiveTab("savings")}
+            variant="outline"
+            icon={<Icon name="star" size="sm" />}
+          >
+            GoodDollar Savings
+          </Button>
+        </div>
       </Card>
 
       <TodoList />
@@ -456,6 +473,343 @@ function TransactionCard() {
             </p>
           )}
         </div>
+      </div>
+    </Card>
+  );
+}
+
+// GoodDollar Savings Widget Component
+export function GoodDollarSavingsWidget() {
+  const { address } = useAccount();
+  const [activeTab, setActiveTab] = useState<'stake' | 'unstake'>('stake');
+  const [inputAmount, setInputAmount] = useState('0.0');
+  const [walletBalance, setWalletBalance] = useState<bigint>(BigInt(0));
+  const [currentStake, setCurrentStake] = useState<bigint>(BigInt(0));
+  const [unclaimedRewards, setUnclaimedRewards] = useState<bigint>(BigInt(0));
+  const [totalStaked, setTotalStaked] = useState<bigint>(BigInt(0));
+  const [userWeeklyRewards, setUserWeeklyRewards] = useState<bigint>(BigInt(0));
+  const [rewardRate, setRewardRate] = useState<bigint>(BigInt(0));
+  const [annualAPR, setAnnualAPR] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [txLoading, setTxLoading] = useState(false);
+  const [isClaiming, setIsClaiming] = useState(false);
+  const [inputError, setInputError] = useState('');
+
+  // Contract addresses and ABI
+  const STAKING_CONTRACT_ADDRESS = '0x799a23dA264A157Db6F9c02BE62F82CE8d602A45' as const;
+  const GDOLLAR_CONTRACT_ADDRESS = '0x62B8B11039FcfE5aB0C56E502b1C372A3d2a9c7A' as const;
+  
+  const STAKING_CONTRACT_ABI = [
+    'function balanceOf(address account) view returns (uint256)',
+    'function earned(address account) view returns (uint256)',
+    'function totalSupply() view returns (uint256)',
+    'function periodFinish() view returns (uint256)',
+    'function getEffectiveRewardRate() view returns (uint256)',
+    'function stake(uint256 amount)',
+    'function withdraw(uint256 amount)',
+    'function getReward()'
+  ] as const;
+
+  const formatBigInt = (num: bigint) => {
+    return Intl.NumberFormat().format(Number(num) / 1e18);
+  };
+
+  const toEtherNumber = (num: bigint) => {
+    return Number(num) / 1e18;
+  };
+
+  const formatPercent = (num: number) => {
+    return `${num.toFixed(2)}%`;
+  };
+
+  const validateInput = (force: boolean = false) => {
+    setInputError('');
+    if (!inputAmount || inputAmount.trim() === '') {
+      return;
+    }
+
+    // Check for invalid characters (only numbers and decimal point allowed)
+    const validInputRegex = /^[0-9]*\.?[0-9]*$/;
+    if (!validInputRegex.test(inputAmount)) {
+      setInputError('Invalid value');
+      return;
+    }
+
+    const numValue = parseFloat(inputAmount);
+    if (isNaN(numValue) || numValue < 0) {
+      setInputError('Invalid value');
+      return;
+    }
+    if (numValue === 0 && force) {
+      setInputError('Please enter a valid amount');
+      return;
+    }
+
+    if (activeTab === 'stake') {
+      const inputAmountWei = BigInt(Math.floor(parseFloat(inputAmount) * 1e18));
+      if (inputAmountWei > walletBalance) {
+        setInputError('Insufficient balance');
+        return;
+      }
+    }
+
+    if (activeTab === 'unstake') {
+      const inputAmountWei = BigInt(Math.floor(parseFloat(inputAmount) * 1e18));
+      if (inputAmountWei > currentStake) {
+        setInputError('Max amount exceeded');
+        return;
+      }
+    }
+  };
+
+  const handleMaxClick = () => {
+    if (activeTab === "stake") {
+      setInputAmount(toEtherNumber(walletBalance).toString());
+    } else {
+      setInputAmount(toEtherNumber(currentStake).toString());
+    }
+    setInputError('');
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputAmount(e.target.value);
+    validateInput();
+  };
+
+  const handleTabClick = (tab: 'stake' | 'unstake') => {
+    setActiveTab(tab);
+    setInputError('');
+  };
+
+  const handleConnectWallet = () => {
+    // This will be handled by the wallet connection in the parent component
+    console.log('Connect wallet clicked');
+  };
+
+  const handleStake = async () => {
+    if (!address) return;
+    validateInput(true);
+    if (inputError) {
+      return;
+    }
+
+    try {
+      setTxLoading(true);
+      // Here you would implement the actual staking logic using viem/wagmi
+      // For now, we'll just simulate the transaction
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setInputAmount('0.0');
+      setInputError('');
+    } catch (error) {
+      console.error('Staking error:', error);
+    } finally {
+      setTxLoading(false);
+    }
+  };
+
+  const handleUnstake = async () => {
+    if (!address) return;
+    validateInput(true);
+    if (inputError) {
+      return;
+    }
+
+    try {
+      setTxLoading(true);
+      // Here you would implement the actual unstaking logic using viem/wagmi
+      // For now, we'll just simulate the transaction
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setInputAmount('0.0');
+      setInputError('');
+    } catch (error) {
+      console.error('Unstaking error:', error);
+    } finally {
+      setTxLoading(false);
+    }
+  };
+
+  const handleClaim = async () => {
+    if (!address) return;
+
+    try {
+      setIsClaiming(true);
+      // Here you would implement the actual claiming logic using viem/wagmi
+      // For now, we'll just simulate the transaction
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    } catch (error) {
+      console.error('Claim error:', error);
+    } finally {
+      setIsClaiming(false);
+    }
+  };
+
+  const isConnected = !!address;
+
+  return (
+    <Card title="GoodDollar Savings" className="max-w-md mx-auto">
+      <div className="space-y-6">
+        {/* Back Navigation */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => window.history.back()}
+          className="mb-2"
+        >
+          ← Back
+        </Button>
+        
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+            <img 
+              alt="G$ logo" 
+              src="https://raw.githubusercontent.com/GoodDollar/GoodDAPP/master/src/assets/Splash/logo.svg"
+              className="w-11 h-11"
+            />
+          </div>
+          <h2 className="text-2xl font-semibold text-[var(--app-foreground)]">GoodDollar Savings</h2>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex bg-[var(--app-gray)] rounded-xl p-1 border border-[var(--app-card-border)]">
+          <button
+            className={`flex-1 py-2.5 px-4 rounded-lg font-medium transition-all ${
+              activeTab === "stake" 
+                ? "bg-[#00b0ff] text-white shadow-md" 
+                : "text-[var(--app-foreground-muted)] hover:text-[var(--app-foreground)]"
+            }`}
+            onClick={() => handleTabClick("stake")}
+          >
+            Stake
+          </button>
+          <button
+            className={`flex-1 py-2.5 px-4 rounded-lg font-medium transition-all ${
+              activeTab === "unstake" 
+                ? "bg-[#00b0ff] text-white shadow-md" 
+                : "text-[var(--app-foreground-muted)] hover:text-[var(--app-foreground)]"
+            }`}
+            onClick={() => handleTabClick("unstake")}
+          >
+            Unstake
+          </button>
+        </div>
+
+        {/* Input Section */}
+        <div className="bg-[var(--app-gray)] rounded-xl p-4 border border-[var(--app-card-border)]">
+          {isConnected && (
+            <div className="flex justify-end items-center mb-3 text-sm text-[var(--app-foreground-muted)]">
+              <span>
+                {activeTab === "stake"
+                  ? `Wallet Balance: ${isLoading ? 'Loading...' : formatBigInt(walletBalance)}`
+                  : `Current Stake: ${isLoading ? 'Loading...' : formatBigInt(currentStake)}`
+                }
+              </span>
+            </div>
+          )}
+          <div className="flex items-center gap-3">
+            <input
+              type="text"
+              value={inputAmount}
+              onChange={handleInputChange}
+              placeholder="0.0"
+              className="flex-1 bg-transparent text-2xl font-semibold text-[var(--app-foreground)] outline-none"
+            />
+            <button 
+              className="bg-white rounded-lg px-3 py-1.5 text-xs font-normal text-gray-700 border border-gray-700 hover:border-[#00b0ff] hover:text-[#00b0ff] transition-colors"
+              onClick={handleMaxClick}
+            >
+              Max
+            </button>
+          </div>
+          {inputError && (
+            <div className="text-red-600 text-xs mt-1 pl-1">{inputError}</div>
+          )}
+        </div>
+
+        {/* Rewards Section */}
+        {isConnected && (
+          <div className="flex justify-between items-center">
+            <span className="text-base text-[var(--app-foreground)]">Unclaimed Rewards</span>
+            <div className="flex items-center gap-2">
+              <button 
+                className="text-[#0387c3] text-base font-semibold underline cursor-pointer disabled:opacity-50"
+                onClick={handleClaim}
+                disabled={isClaiming}
+              >
+                {isClaiming ? 'Claiming...' : 'Claim'}
+              </button>
+              <span>{isLoading ? 'Loading...' : formatBigInt(unclaimedRewards)}</span>
+            </div>
+          </div>
+        )}
+
+        {/* Main Action Button */}
+        {!isConnected ? (
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleConnectWallet}
+            className="w-full"
+          >
+            Connect Wallet
+          </Button>
+        ) : (
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={activeTab === "stake" ? handleStake : handleUnstake}
+            disabled={txLoading}
+            className="w-full"
+          >
+            {txLoading ? 'Processing...' : (activeTab === "stake" ? "Stake" : "Unstake")}
+          </Button>
+        )}
+
+        {/* Stats Section */}
+        <div className="bg-[var(--app-gray)] rounded-xl p-5 border border-[var(--app-card-border)]">
+          <h3 className="text-lg font-semibold text-[var(--app-foreground)] mb-4">Staking Statistics</h3>
+          
+          <div className="space-y-3">
+            <div className="flex justify-between items-center py-2 border-b border-[var(--app-card-border)]">
+              <span className="text-sm text-[var(--app-foreground-muted)]">Total G$ Staked</span>
+              <span className="text-sm font-semibold text-[var(--app-foreground)]">
+                {isLoading ? 'Loading...' : formatBigInt(totalStaked)}
+              </span>
+            </div>
+
+            {isConnected && (
+              <>
+                <div className="flex justify-between items-center py-2 border-b border-[var(--app-card-border)]">
+                  <span className="text-sm text-[var(--app-foreground-muted)]">Your G$ Stake Pool Share</span>
+                  <span className="text-sm font-semibold text-[var(--app-foreground)]">
+                    {isLoading ? 'Loading...' : formatBigInt(currentStake)}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center py-2 border-b border-[var(--app-card-border)]">
+                  <span className="text-sm text-[var(--app-foreground-muted)]">Your Weekly Rewards</span>
+                  <span className="text-sm font-semibold text-[var(--app-foreground)]">
+                    {isLoading ? 'Loading...' : formatBigInt(userWeeklyRewards)}
+                  </span>
+                </div>
+              </>
+            )}
+
+            <div className="flex justify-between items-center py-2">
+              <span className="text-sm text-[var(--app-foreground-muted)]">Annual Stake APR</span>
+              <span className="text-sm font-semibold text-[var(--app-foreground)]">
+                {isLoading ? 'Loading...' : formatPercent(annualAPR)}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Loading Overlay */}
+        {(txLoading || isClaiming) && (
+          <div className="absolute inset-0 bg-white/20 rounded-xl flex items-center justify-center pointer-events-none">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#00b0ff]"></div>
+          </div>
+        )}
       </div>
     </Card>
   );
