@@ -41,32 +41,8 @@ export function SquidWidgetComponent() {
           config={{
             integratorId: "squid-router-mini-app",
             apiUrl: "https://apiplus.squidrouter.com",
-            // Enable slippage protection
+            // Basic configuration for the widget
             slippage: 0.5,
-            // Enable gas estimation
-            enableGasEstimation: true,
-            // Enable transaction history
-            enableTransactionHistory: true,
-            // Enable notifications
-            enableNotifications: true,
-            // Custom RPC endpoints for better performance
-            rpcUrls: {
-              1: "https://eth.llamarpc.com", // Ethereum
-              8453: "https://mainnet.base.org", // Base
-              137: "https://polygon-rpc.com", // Polygon
-              42161: "https://arb1.arbitrum.io/rpc", // Arbitrum
-              10: "https://mainnet.optimism.io", // Optimism
-            },
-            // Enable popular chains
-            chains: [
-              { id: 1, name: "Ethereum" },
-              { id: 8453, name: "Base" },
-              { id: 137, name: "Polygon" },
-              { id: 42161, name: "Arbitrum" },
-              { id: 10, name: "Optimism" },
-              { id: 56, name: "BNB Chain" },
-              { id: 43114, name: "Avalanche" },
-            ],
           }}
         />
       </div>
