@@ -4,10 +4,10 @@ import { SquidWidgetComponent } from "./components/DemoComponents";
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen font-sans">
-      <main className="flex-1 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-6xl px-4">
         <SquidWidgetComponent />
-      </main>
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ const SquidWidget = dynamic(
 
 export function SquidWidgetComponent() {
   return (
-    <div className="w-full h-[600px]">
+    <div className="w-full max-w-4xl h-[600px] mx-auto">
       <SquidWidget
         config={{
           integratorId: "squid-router-mini-app",
