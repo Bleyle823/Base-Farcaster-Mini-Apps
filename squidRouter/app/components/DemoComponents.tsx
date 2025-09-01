@@ -41,35 +41,6 @@ export function SquidWidgetComponent() {
           config={{
             integratorId: "squid-router-mini-app",
             apiUrl: "https://apiplus.squidrouter.com",
-            // Enhanced configuration for better UX
-            appearance: {
-              theme: "light",
-              borderRadius: 12,
-              primaryColor: "#3B82F6",
-              secondaryColor: "#6B7280",
-              fontFamily: "Inter, system-ui, sans-serif",
-            },
-            // Default tokens for better user experience
-            defaultTokens: {
-              fromToken: {
-                address: "0x4200000000000000000000000000000000000006", // WETH on Base
-                chainId: 8453, // Base
-                decimals: 18,
-                logoURI: "https://assets.coingecko.com/coins/images/279/small/ethereum.png",
-                name: "Wrapped Ether",
-                symbol: "WETH",
-                coingeckoId: "weth",
-              },
-              toToken: {
-                address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
-                chainId: 8453, // Base
-                decimals: 6,
-                logoURI: "https://assets.coingecko.com/coins/images/6319/small/USD_Coin_icon.png",
-                name: "USD Coin",
-                symbol: "USDC",
-                coingeckoId: "usd-coin",
-              },
-            },
             // Enable slippage protection
             slippage: 0.5,
             // Enable gas estimation
